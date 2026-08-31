@@ -14,18 +14,6 @@
 > **ULPF (Universal Log Pre-processing Framework)** is a high-performance cybersecurity platform designed to ingest raw, heterogeneous logs from diverse operating systems, firewalls, and application microservices, dynamically detect formats, normalize data into one common event schema standard, compute cryptographic **SHA-256 hashes**, and preserve raw log audit integrity.
 </div>
 
-
----
-
-## 🌐 Quick Access Links
-
-| Service | Technology | Public Access Link |
-| :--- | :--- | :--- |
-| 🚀 **Live Web Application** | React 18 + Vite (Vercel) | [https://ulpf.vercel.app/](https://ulpf.vercel.app/) |
-| ⚡ **Live Production API** | Python FastAPI (Railway) | [https://ulpf-production.up.railway.app](https://ulpf-production.up.railway.app) |
-| 📚 **Interactive API Specs** | Swagger / OpenAPI UI | [https://ulpf-production.up.railway.app/docs](https://ulpf-production.up.railway.app/docs) |
-| 📂 **GitHub Source Code** | Git Repository | [https://github.com/vgnanasekaran007-hub/ULPF](https://github.com/vgnanasekaran007-hub/ULPF) |
-
 ---
 
 ## ⚡ Core Features & Key Innovations
@@ -191,3 +179,4 @@ This project is licensed under the MIT License — see the [LICENSE](LICENSE) fi
 
 ---
 
+⭐ **Star this repo** if you found it useful!!!
