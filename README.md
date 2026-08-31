@@ -1,3 +1,5 @@
+<div align="center">
+
 # 🛡️ ULPF — Universal Log Pre-processing Framework
 
 ---
@@ -10,6 +12,8 @@
 [![LICENSE](https://img.shields.io/badge/LICENSE-MIT-7C3AED?style=for-the-badge)](LICENSE)
 
 > **ULPF (Universal Log Pre-processing Framework)** is a high-performance cybersecurity platform designed to ingest raw, heterogeneous logs from diverse operating systems, firewalls, and application microservices, dynamically detect formats, normalize data into one common event schema standard, compute cryptographic **SHA-256 hashes**, and preserve raw log audit integrity.
+</div>
+
 
 ---
 
