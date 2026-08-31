@@ -1,32 +1,26 @@
 # 🛡️ ULPF — Universal Log Pre-processing Framework
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Status-Live_Production-emerald?style=for-the-badge&logo=fastapi&logoColor=white" alt="Status" />
-  <img src="https://img.shields.io/badge/Frontend-React_18_|_Vite_|_Tailwind-blue?style=for-the-badge&logo=react&logoColor=white" alt="Frontend" />
-  <img src="https://img.shields.io/badge/Backend-FastAPI_|_Python_3.11-009688?style=for-the-badge&logo=python&logoColor=white" alt="Backend" />
-  <img src="https://img.shields.io/badge/Deploy-Railway_|_Vercel-black?style=for-the-badge&logo=vercel&logoColor=white" alt="Deploy" />
-  <img src="https://img.shields.io/badge/License-MIT-purple?style=for-the-badge" alt="License" />
-</p>
+---
 
-<h3 align="center">
-  <b><i>"Any Log → One Standard Schema"</i></b>
-</h3>
+[![LIVE DEMO](https://img.shields.io/badge/LIVE_DEMO-VERCEL-00C7FF?style=for-the-badge&logo=vercel&logoColor=white)](https://ulpf.vercel.app/)
+[![BACKEND API](https://img.shields.io/badge/BACKEND-FASTAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://ulpf-production.up.railway.app)
+[![SWAGGER DOCS](https://img.shields.io/badge/API_DOCS-SWAGGER-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://ulpf-production.up.railway.app/docs)
+[![FRONTEND](https://img.shields.io/badge/FRONTEND-REACT_+_VITE-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://ulpf.vercel.app/)
+[![STYLES](https://img.shields.io/badge/STYLES-TAILWIND_SOC-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://ulpf.vercel.app/)
+[![LICENSE](https://img.shields.io/badge/LICENSE-MIT-7C3AED?style=for-the-badge)](LICENSE)
+
+> **ULPF (Universal Log Pre-processing Framework)** is a high-performance cybersecurity platform designed to ingest raw, heterogeneous logs from diverse operating systems, firewalls, and application microservices, dynamically detect formats, normalize data into one common event schema standard, compute cryptographic **SHA-256 hashes**, and preserve raw log audit integrity.
 
 ---
 
-## 📖 Overview
+## 🌐 Quick Access Links
 
-**ULPF (Universal Log Pre-processing Framework)** is a modern cybersecurity platform engineered to ingest raw, unstructured, and heterogeneous logs from diverse operating systems, firewalls, and application microservices. 
-
-It dynamically detects log formats, extracts key security attributes, normalizes data into a single unified event schema standard, computes cryptographic **SHA-256 hashes** for raw audit preservation, and indexes the results for real-time SOC security operations.
-
----
-
-## 🌐 Live Deployments & Repository Links
-
-- 🔗 **GitHub Repository**: [vgnanasekaran007-hub/ULPF](https://github.com/vgnanasekaran007-hub/ULPF)
-- ⚡ **Live Production Backend**: `https://ulpf-production.up.railway.app`
-- 📚 **Live API Swagger Docs**: `https://ulpf-production.up.railway.app/docs`
+| Service | Technology | Public Access Link |
+| :--- | :--- | :--- |
+| 🚀 **Live Web Application** | React 18 + Vite (Vercel) | [https://ulpf.vercel.app/](https://ulpf.vercel.app/) |
+| ⚡ **Live Production API** | Python FastAPI (Railway) | [https://ulpf-production.up.railway.app](https://ulpf-production.up.railway.app) |
+| 📚 **Interactive API Specs** | Swagger / OpenAPI UI | [https://ulpf-production.up.railway.app/docs](https://ulpf-production.up.railway.app/docs) |
+| 📂 **GitHub Source Code** | Git Repository | [https://github.com/vgnanasekaran007-hub/ULPF](https://github.com/vgnanasekaran007-hub/ULPF) |
 
 ---
 
@@ -48,7 +42,7 @@ It dynamically detects log formats, extracts key security attributes, normalizes
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ System Pipeline Architecture
 
 ```mermaid
 flowchart LR
@@ -169,7 +163,7 @@ Open **`http://localhost:5173`** in your browser.
    - `DATABASE_URL` = `sqlite:///./ulpf.db`
 5. Generate Public Domain in Railway Networking.
 
-### Deploy Frontend to **Vercel** or **Render**
+### Deploy Frontend to **Vercel**
 1. Create new project on [Vercel.com](https://vercel.com) from GitHub repo `vgnanasekaran007-hub/ULPF`.
 2. Set **Root Directory**: `frontend`
 3. Set **Build Command**: `npm run build`
