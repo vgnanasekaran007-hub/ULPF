@@ -1,0 +1,1 @@
+<189>1 2026-08-31T14:25:00.123Z fw01.corp FORTINET - - - date=2026-08-31 time=14:25:00 devname="FW-CORE-01" devid="FG200E12345678" eventtype="system" level="warning" logid="0100032001" type="event" subtype="system" action="deny" status="AUTH_FAIL" user="admin" srcip=192.168.1.10 dstip=10.0.0.1 srcport=51230 dstport=443 msg="User authentication failed on administrative port"

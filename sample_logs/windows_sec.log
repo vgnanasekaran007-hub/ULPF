@@ -1,0 +1,24 @@
+An account failed to log on.
+Subject:
+	Security ID: NULL SID
+	Account Name: -
+	Account Domain: -
+	Logon ID: 0x0
+Logon Type: 3
+Account For Which Logon Failed:
+	Security ID: NULL SID
+	Account Name: admin
+	Account Domain: WORKGROUP
+Failure Information:
+	Failure Reason: Unknown user name or bad password.
+	Status: 0xC000006D
+	Sub Status: 0xC000006A
+Network Information:
+	Workstation Name: DESKTOP-SEC
+	Source Network Address: 192.168.1.10
+	Source Port: 54112
+Process Information:
+	Caller Process ID: 0x0
+	Caller Process Name: -
+Event ID: 4625
+Keywords: Audit Failure
