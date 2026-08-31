@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { SAMPLE_LOGS, INITIAL_STATS, INITIAL_EVENTS, INITIAL_PARSERS } from '../sampleData';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://ulpf-production.up.railway.app/api';
 
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -171,7 +171,7 @@ function simulateClientSideLogProcess(rawLog) {
     try {
       const parsed = JSON.parse(logStr);
       event_type = (parsed.event_name || parsed.event || "application_event").replace(/\./g, "_");
-      user = parsed.user || "app_user";
+      user = parsed.user || parsed.username || "app_user";
       source_ip = parsed.client_ip || parsed.ip || "10.0.12.44";
       if (parsed.level === "CRITICAL" || parsed.level === "ERROR") {
         severity = parsed.level === "CRITICAL" ? "critical" : "high";
