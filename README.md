@@ -1,34 +1,73 @@
-# ULPF — Universal Log Pre-processing Framework
+# 🛡️ ULPF — Universal Log Pre-processing Framework
 
-[![SIH Prototype](https://img.shields.io/badge/SIH-Submission_Ready-0284c7.svg)](https://github.com/)
-[![License](https://img.shields.io/badge/License-MIT-emerald.svg)](LICENSE)
-[![FastAPI](https://img.shields.io/badge/Backend-FastAPI_Python_3.11-009688.svg)](https://fastapi.tiangolo.com)
-[![React](https://img.shields.io/badge/Frontend-React_Vite_Tailwind-61dafb.svg)](https://reactjs.org)
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Live_Production-emerald?style=for-the-badge&logo=fastapi&logoColor=white" alt="Status" />
+  <img src="https://img.shields.io/badge/Frontend-React_18_|_Vite_|_Tailwind-blue?style=for-the-badge&logo=react&logoColor=white" alt="Frontend" />
+  <img src="https://img.shields.io/badge/Backend-FastAPI_|_Python_3.11-009688?style=for-the-badge&logo=python&logoColor=white" alt="Backend" />
+  <img src="https://img.shields.io/badge/Deploy-Railway_|_Vercel-black?style=for-the-badge&logo=vercel&logoColor=white" alt="Deploy" />
+  <img src="https://img.shields.io/badge/License-MIT-purple?style=for-the-badge" alt="License" />
+</p>
 
-> **"Any Log → One Standard Schema"**
-
-**ULPF (Universal Log Pre-processing Framework)** is a modern, high-performance cybersecurity platform designed to ingest raw logs from heterogeneous sources (Linux SSH, Windows Event ID 4625, Firewall Syslog, JSON App Microservices), detect their formats dynamically, parse fields, normalize them into a unified schema standard, compute cryptographic SHA-256 integrity hashes, and preserve original raw logs linked to unique Event IDs.
-
----
-
-## 🚀 Quick 2-Minute Hackathon Demonstration Flow
-
-1. **Dashboard View**: Overview of total logs ingested, processing success rates, system sources breakdown (Donut Chart), severity breakdown (Bar Chart), and real-time processing pipeline.
-2. **Log Processing Centerpiece**:
-   - Click **`LINUX`**, **`WINDOWS`**, **`FIREWALL`**, or **`JSON`** sample buttons (or upload/paste custom logs).
-   - Click **`Process Log`**.
-   - Observe live visual pipeline status (`Ingest → Detect → Parse → Normalize → Validate → Preserve`).
-   - Compare **Original Raw Log** alongside **Normalized Event JSON** side-by-side.
-   - Note that despite completely different raw log formats, all 4 formats normalize into the **EXACT SAME schema** (`event_type: authentication_failure`, `user: admin`, `source_ip: 192.168.1.10`, `severity: high`).
-   - Verify SHA-256 fingerprint preservation and sub-2ms processing time.
-3. **Events Search**: Filter and search normalized events by IP (`192.168.1.10`), User (`admin`), or Severity (`high`). Click any row to open the details drawer.
-4. **Parser Registry**: Showcase modular parser engines (`linux_auth_v1`, `windows_sec_v1`, `firewall_syslog_v1`, `json_app_v1`) and click **"Add Parser"** to show instant engine expansion (`NEW SOURCE → ADD CONFIGURATION → REUSE ENGINE`).
+<h3 align="center">
+  <b><i>"Any Log → One Standard Schema"</i></b>
+</h3>
 
 ---
 
-## 🛠️ Architecture & Tech Stack
+## 📖 Overview
 
-### Unified Event Schema Standard
+**ULPF (Universal Log Pre-processing Framework)** is a modern cybersecurity platform engineered to ingest raw, unstructured, and heterogeneous logs from diverse operating systems, firewalls, and application microservices. 
+
+It dynamically detects log formats, extracts key security attributes, normalizes data into a single unified event schema standard, computes cryptographic **SHA-256 hashes** for raw audit preservation, and indexes the results for real-time SOC security operations.
+
+---
+
+## 🌐 Live Deployments & Repository Links
+
+- 🔗 **GitHub Repository**: [vgnanasekaran007-hub/ULPF](https://github.com/vgnanasekaran007-hub/ULPF)
+- ⚡ **Live Production Backend**: `https://ulpf-production.up.railway.app`
+- 📚 **Live API Swagger Docs**: `https://ulpf-production.up.railway.app/docs`
+
+---
+
+## ⚡ Core Features & Key Innovations
+
+- 🧠 **Dynamic Format Detection**: Automatically identifies Linux `syslog/auth.log`, Windows Event Logs (Event ID 4625, 4624, 1102), Firewall Syslog (Fortinet/Cisco key-value pairs), and JSON microservice payloads.
+- 📐 **Unified Schema Normalization**: Standardizes all incoming log types into one consistent 9-attribute event schema.
+- 🔒 **Cryptographic Preservation**: Computes immutable **SHA-256 raw log hashes** linked 1-to-1 with unique Event IDs (`EVT-XXXXXX`) to prevent log tampering.
+- 📥 **CSV Data Export**: Single-click export of normalized security events directly to CSV files from the Dashboard, Search table, or Event Drawer.
+- ⏱️ **Sub-2ms Processing**: High-throughput parsing pipeline processing events in `< 2.0 ms` per log.
+- 🛡️ **Multi-Event Type Engine**: Standardizes across **ALL** cybersecurity event categories:
+  - `authentication_failure` & `authentication_success`
+  - `privilege_escalation` (`sudo` root execution)
+  - `security_audit_log_cleared` (Windows Event 1102)
+  - `network_traffic_deny` (Firewall packet drops)
+  - `vpn_tunnel_connected` (Remote access IPsec VPN)
+  - `database_connection_timeout` (Microservice pool errors)
+  - `api_rate_limit_exceeded` (API Gateway thresholds)
+
+---
+
+## 🏗️ System Architecture
+
+```mermaid
+flowchart LR
+    A[Raw Heterogeneous Logs] --> B[1. Ingest Stage]
+    B --> C[2. Format Detection Engine]
+    C --> D[3. Dynamic Regex/JSON Parser]
+    D --> E[4. Schema Normalizer]
+    E --> F[5. Pydantic Validator]
+    F --> G[6. SHA-256 Preservation & Storage]
+    G --> H[(PostgreSQL / SQLite)]
+    G --> I[React SOC Dashboard]
+```
+
+---
+
+## 💎 Unified Common Schema Standard
+
+Regardless of the incoming log format (Linux, Windows, Firewall, JSON), ULPF normalizes the output into this unified schema:
+
 ```json
 {
   "event_id": "EVT-89A1F2",
@@ -39,108 +78,107 @@
   "source_ip": "192.168.1.10",
   "severity": "high",
   "parser_id": "linux_auth_v1",
-  "raw_log_hash": "8f4e2b10a99c8321045b81a7741029c38174201948d0a92841029e8471029a81"
+  "raw_log_hash": "8f4e2b10a99c8321045b81a7741029c38174201948d0a92841029e8471029a81",
+  "status": "processed",
+  "confidence": 0.98,
+  "processing_time_ms": 1.4
 }
 ```
 
-### Stack Components
-- **Frontend**: React 18, Vite, Tailwind CSS, Lucide Icons, Recharts (Hosted on **Vercel**).
-- **Backend API**: Python 3.11, FastAPI, Pydantic v2, SQLAlchemy (Hosted on **Railway**).
-- **Database**: PostgreSQL (Production) / SQLite (Zero-config local auto-fallback).
-- **Storage & Search Architecture**: MinIO object storage raw log bucket design + OpenSearch index schemas.
-
 ---
 
-## 📁 Project Structure
+## 📂 Project Structure
 
-```
-ulpf/
-├── frontend/                  # React + Vite + Tailwind CSS Frontend
-│   ├── src/
-│   │   ├── components/        # Sidebar, Topbar, Pipeline, LogUploader, Raw/Normalized Viewers, EventTable
-│   │   ├── pages/             # Dashboard, LogProcessing, Events, ParserRegistry
-│   │   ├── services/          # API Axios service & client-side simulation engine fallback
-│   │   ├── sampleData.js      # Built-in prototype sample logs
-│   │   ├── App.jsx            # Application Router
-│   │   └── main.jsx
-│   ├── package.json
-│   ├── vite.config.js
-│   └── Dockerfile
-│
-├── backend/                   # FastAPI Python Backend
+```text
+ULPF/
+├── backend/                   # FastAPI Python Backend Service
 │   ├── app/
-│   │   ├── main.py            # FastAPI entrypoint with CORS & sample seeding
-│   │   ├── config.py          # App settings & env loading
-│   │   ├── database.py        # Dynamic PostgreSQL / SQLite session manager
-│   │   ├── models.py          # DB Schema (raw_events, normalized_events, parsers)
-│   │   ├── api/               # API endpoints (/logs, /events, /dashboard, /parsers)
-│   │   ├── services/          # Format detector, storage service, log processor engine
-│   │   ├── parsers/           # Linux, Windows, Firewall, and JSON parsers
-│   │   └── schemas/           # Pydantic schemas
+│   │   ├── main.py            # FastAPI Application Entrypoint & Startup Seeding
+│   │   ├── config.py          # Environment Variables & Settings
+│   │   ├── database.py        # SQLAlchemy Database Engine (SQLite / PostgreSQL)
+│   │   ├── models.py          # DB ORM Models (RawEvent, NormalizedEvent, Parser)
+│   │   ├── api/               # Router Endpoints (/logs, /events, /dashboard, /parsers)
+│   │   ├── services/          # Log Processor & Format Detector Engines
+│   │   ├── parsers/           # Linux, Windows, Firewall, and JSON Parsers
+│   │   └── schemas/           # Pydantic Schemas
 │   ├── requirements.txt
 │   └── Dockerfile
 │
-├── sample_logs/               # Real log samples for demonstration
+├── frontend/                  # React + Vite + Tailwind CSS SOC Frontend
+│   ├── src/
+│   │   ├── components/        # Sidebar, Topbar, Pipeline, EventTable, EventDrawer
+│   │   ├── pages/             # Dashboard, LogProcessing, Events, ParserRegistry
+│   │   ├── services/          # Axios API Client & Simulation Fallback Engine
+│   │   ├── utils/             # CSV Exporter Utility
+│   │   ├── sampleData.js      # Heterogeneous Sample Logs & Initial State
+│   │   ├── App.jsx            # Main Router
+│   │   └── main.jsx
+│   ├── vercel.json            # Vercel SPA Routing Configuration
+│   ├── package.json
+│   └── vite.config.js
+│
+├── sample_logs/               # Real Log Samples for Testing
 │   ├── linux_auth.log
 │   ├── windows_sec.log
 │   ├── firewall.log
 │   └── app_json.json
-├── docker-compose.yml         # Full local stack (PostgreSQL + MinIO + Backend + Frontend)
-├── .env.example               # Environment variables template
+├── docker-compose.yml         # Full Local Stack Container Orchestration
+├── .env.example               # Environment Variables Template
 └── README.md
 ```
 
 ---
 
-## ⚡ Running Locally
+## ⚡ Quickstart & Local Setup
 
-### Option A: 1-Command Docker Compose (Full Stack)
+### Option 1: Docker Compose (Full Stack)
 ```bash
 docker-compose up --build
 ```
-- Frontend: `http://localhost:3000`
-- Backend API Docs: `http://localhost:8000/docs`
-- MinIO Storage Console: `http://localhost:9001`
+- **Frontend App**: `http://localhost:3000`
+- **Backend Swagger Docs**: `http://localhost:8000/docs`
 
-### Option B: Local Development (Separate Terminals)
+### Option 2: Local Development
 
-#### 1. Backend Server
+#### 1. Start FastAPI Backend
 ```bash
 cd backend
 pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-#### 2. Frontend Web App
+#### 2. Start React Frontend
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-Open `http://localhost:5173` in browser.
+Open **`http://localhost:5173`** in your browser.
 
 ---
 
-## 🌐 Deployment Instructions
+## 🌐 Production Deployment Guide
 
-### Deployment to Vercel (Frontend)
-1. Push repository code to GitHub.
-2. Import `frontend` root directory into Vercel.
-3. Set environment variable: `VITE_API_BASE_URL=https://your-railway-backend.up.railway.app/api`.
-4. Deploy!
+### Deploy Backend to **Railway**
+1. Create new project on [Railway.app](https://railway.app) from GitHub repo `vgnanasekaran007-hub/ULPF`.
+2. Set **Root Directory**: `backend`
+3. Set **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+4. Set Environment Variables:
+   - `ENVIRONMENT` = `production`
+   - `CORS_ORIGINS` = `*`
+   - `DATABASE_URL` = `sqlite:///./ulpf.db`
+5. Generate Public Domain in Railway Networking.
 
-### Deployment to Railway (Backend + PostgreSQL)
-1. Create new project on Railway.
-2. Add a **PostgreSQL** database service.
-3. Deploy backend code from GitHub repository (`backend` folder).
-4. Add Environment Variable:
-   - `DATABASE_URL=${PostgreSQL.DATABASE_URL}`
-   - `CORS_ORIGINS=https://your-app.vercel.app`
-5. Railway starts `uvicorn app.main:app --host 0.0.0.0 --port $PORT`.
+### Deploy Frontend to **Vercel** or **Render**
+1. Create new project on [Vercel.com](https://vercel.com) from GitHub repo `vgnanasekaran007-hub/ULPF`.
+2. Set **Root Directory**: `frontend`
+3. Set **Build Command**: `npm run build`
+4. Set **Output Directory**: `dist`
+5. Set Environment Variable:
+   - `VITE_API_BASE_URL` = `https://ulpf-production.up.railway.app/api`
 
 ---
 
-## 🛡️ Security & Integrity Highlights
-- **No Hardcoded Secrets**: All backend API endpoints and DB connections consume environment variables.
-- **Input Validation**: Pydantic models validate raw log payloads and prevents malformed requests.
-- **SHA-256 Hashing**: Every raw log is cryptographically hashed prior to normalization, providing immutable audit trail traceability between `raw_events` and `normalized_events`.
+## 📄 License
+
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
