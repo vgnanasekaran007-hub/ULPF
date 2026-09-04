@@ -113,57 +113,6 @@ ULPF/
 └── README.md
 ```
 
----
-
-## ⚡ Quickstart & Local Setup
-
-### Option 1: Docker Compose (Full Stack)
-```bash
-docker-compose up --build
-```
-- **Frontend App**: `http://localhost:3000`
-- **Backend Swagger Docs**: `http://localhost:8000/docs`
-
-### Option 2: Local Development
-
-#### 1. Start FastAPI Backend
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-```
-
-#### 2. Start React Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-```
-Open **`http://localhost:5173`** in your browser.
-
----
-
-## 🌐 Production Deployment Guide
-
-### Deploy Backend to **Railway**
-1. Create new project on [Railway.app](https://railway.app) from GitHub repo `vgnanasekaran007-hub/ULPF`.
-2. Set **Root Directory**: `backend`
-3. Set **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-4. Set Environment Variables:
-   - `ENVIRONMENT` = `production`
-   - `CORS_ORIGINS` = `*`
-   - `DATABASE_URL` = `sqlite:///./ulpf.db`
-5. Generate Public Domain in Railway Networking.
-
-### Deploy Frontend to **Vercel**
-1. Create new project on [Vercel.com](https://vercel.com) from GitHub repo `vgnanasekaran007-hub/ULPF`.
-2. Set **Root Directory**: `frontend`
-3. Set **Build Command**: `npm run build`
-4. Set **Output Directory**: `dist`
-5. Set Environment Variable:
-   - `VITE_API_BASE_URL` = `https://ulpf-production.up.railway.app/api`
-
----
 
 ## 📄 License
 
