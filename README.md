@@ -138,4 +138,4 @@ Made with ❤️ using Flask · Pillow · Bootstrap 5 · Chart.js · Leaflet.js
 
 
 
-⭐ **Star this repo** if you found it useful!!!!!!!
+⭐ **Star this repo** if you found it useful!!!!!
